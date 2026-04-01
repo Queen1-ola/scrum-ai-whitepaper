@@ -575,11 +575,21 @@ const csTabs=document.querySelectorAll('.cs-tab');
 const csPanels=document.querySelectorAll('.cs-panel');
 function switchTab(ch){
   csTabs.forEach(t=>t.classList.toggle('active',t.dataset.ch===ch));
-  csPanels.forEach(p=>p.classList.toggle('active',p.id==='cs-'+ch));
+  csPanels.forEach(p=>{
+    const isActive=p.id==='cs-'+ch;
+    p.classList.toggle('active',isActive);
+    if(isActive) p.style.display='block';
+    else p.style.display='none';
+  });
   loadGiscus(ch);
 }
 csTabs.forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.ch)));
-loadGiscus('preface'); // 默认加载前言
+// 初始化：加载所有章节的 Giscus，隐藏非active面板
+Object.keys(chTerms).forEach(ch=>{
+  const panel=document.getElementById('cs-'+ch);
+  if(panel && !panel.classList.contains('active')) panel.style.display='none';
+  loadGiscus(ch);
+});
 
 // 随正文滚动自动切换
 const chapterMap={preface:'preface',ch1:'ch1',ch2:'ch2',ch3:'ch3',ch4:'ch4',ch5:'ch5',epilogue:'epilogue'};
