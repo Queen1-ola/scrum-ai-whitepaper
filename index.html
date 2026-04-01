@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0A3D6B;--navy-dk:#06274A;--navy-lt:#1A5C9E;--accent:#C8932A;--accent-lt:#F5E6C8;--ink:#0D1B2A;--ink2:#1E3448;--muted:#5A7290;--rule:#D0DCE8;--bg:#F8F9FB;--bg2:#EFF3F7;--white:#FFFFFF;--green:#1A6648;--green-lt:#E3F2EC;--amber:#8B5E0A;--amber-lt:#FDF3DC;--blue-lt:#E8F0FB;--gold:#9B6E1A;--gold-lt:#FBF4E6;--content:780px;--sidebar:220px}
+:root{--navy:#0A3D6B;--navy-dk:#06274A;--navy-lt:#1A5C9E;--accent:#C8932A;--accent-lt:#F5E6C8;--ink:#0D1B2A;--ink2:#1E3448;--muted:#5A7290;--rule:#D0DCE8;--bg:#F8F9FB;--bg2:#EFF3F7;--white:#FFFFFF;--green:#1A6648;--green-lt:#E3F2EC;--amber:#8B5E0A;--amber-lt:#FDF3DC;--blue-lt:#E8F0FB;--gold:#9B6E1A;--gold-lt:#FBF4E6;--content:780px;--sidebar:220px;--comment-sidebar:260px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth}
 body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);line-height:1.85}
@@ -19,7 +19,7 @@ body{font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink)
 #topnav nav a{font-size:.78rem;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .2s;padding:2px 0}
 #topnav nav a:hover,#topnav nav a.active{color:var(--navy)}
 #topnav nav a.active{border-bottom:2px solid var(--accent);font-weight:500}
-#layout{display:flex;max-width:calc(var(--sidebar) + var(--content) + 6rem);margin:0 auto;padding-top:55px;min-height:100vh}
+#layout{display:flex;max-width:calc(var(--sidebar) + var(--content) + var(--comment-sidebar) + 8rem);margin:0 auto;padding-top:55px;min-height:100vh}
 #sidebar{width:var(--sidebar);flex-shrink:0;position:sticky;top:55px;height:calc(100vh - 55px);overflow-y:auto;padding:2.5rem 1.5rem 2rem 1rem;border-right:1px solid var(--rule)}
 #sidebar ul{list-style:none}
 #sidebar ul li{margin-bottom:.15rem}
@@ -95,7 +95,20 @@ table.tbl-people td:first-child{font-weight:600;color:var(--green);background:va
 footer{background:var(--navy-dk);color:rgba(255,255,255,.6);font-size:.75rem;padding:1.5rem 3rem;text-align:center;margin-top:4rem}
 a{color:var(--navy-lt);transition:color .2s}
 a:hover{color:var(--navy)}
-@media(max-width:900px){#sidebar,#topnav nav{display:none}#main{padding:2rem 1.5rem 4rem}.fn-list{grid-template-columns:1fr}}
+@media(max-width:900px){#sidebar,#topnav nav{display:none}#main{padding:2rem 1.5rem 4rem}.fn-list{grid-template-columns:1fr}#comment-sidebar{display:none}}
+@media(max-width:1280px){#comment-sidebar{display:none}}
+#comment-sidebar{width:var(--comment-sidebar);flex-shrink:0;position:sticky;top:55px;height:calc(100vh - 55px);overflow-y:auto;padding:1.8rem 1.2rem 2rem 1.2rem;border-left:1px solid var(--rule);}
+#comment-sidebar::-webkit-scrollbar{width:4px}
+#comment-sidebar::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+.cs-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--rule)}
+.cs-title{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cs-tab-row{display:flex;gap:.35rem;margin-bottom:1rem;flex-wrap:wrap}
+.cs-tab{font-size:.7rem;padding:.2rem .55rem;border-radius:4px;border:1px solid var(--rule);background:transparent;color:var(--muted);cursor:pointer;transition:all .18s;white-space:nowrap}
+.cs-tab:hover{border-color:var(--navy-lt);color:var(--navy)}
+.cs-tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.cs-panel{display:none}
+.cs-panel.active{display:block}
+.cs-chapter-label{font-size:.7rem;color:var(--muted);margin-bottom:.75rem;padding:.3rem .5rem;background:var(--bg2);border-radius:4px;text-align:center}
 </style>
 </head>
 <body>
@@ -461,8 +474,69 @@ SPEC 覆盖率</td>
 <section id="footnotes"><h2>参考来源</h2><ul class="fn-list"><li class="fn-item" id="ref-1"><span class="fn-num">1</span><span class="fn-text">McKinsey，，2025年10月，<em>《Six shifts to build the agentic organization of the future》</em> <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/six-shifts-to-build-the-agentic-organization-of-the-future" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-2"><span class="fn-num">2</span><span class="fn-text">McKinsey，，2025年11月，<em>《Rethink management and talent for agentic AI》</em> <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/rethink-management-and-talent-for-agentic-ai" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-3"><span class="fn-num">3</span><span class="fn-text">McKinsey，，2025年9月，<em>《The agentic organization: Contours of the next paradigm for the AI era》</em> <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-agentic-organization-contours-of-the-next-paradigm-for-the-ai-era" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-4"><span class="fn-num">4</span><span class="fn-text">McKinsey，，2025年11月，<em>《Agents, robots, and us: Skill partnerships in the age of AI》</em> <a href="https://www.mckinsey.com/mgi/our-research/agents-robots-and-us-skill-partnerships-in-the-age-of-ai" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-5"><span class="fn-num">5</span><span class="fn-text">Addy Osmani，<em>《The future of agentic coding: conductors to orchestrators》</em> <a href="https://addyosmani.com/blog/future-agentic-coding/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-6"><span class="fn-num">6</span><span class="fn-text">Nicholas Zakas，，2026年1月，<em>《From Coder to Orchestrator: The future of software engineering with AI》</em> <a href="https://humanwhocodes.com/blog/2026/01/coder-orchestrator-future-software-engineering/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-7"><span class="fn-num">7</span><span class="fn-text">Argos Infotech，，2026年2月，<em>《The AI-Augmented Software Team: How Our Operating Model Changed in 2025》</em> <a href="https://www.argosinfotech.com/2026/02/05/the-ai-augmented-software-team-how-our-operating-model-changed-in-2025/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-8"><span class="fn-num">8</span><span class="fn-text">General Assembly，，2025年10月，<em>《AI is everywhere in product management》</em> <a href="https://generalassemb.ly/blog/ai-and-product-management-survey/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-9"><span class="fn-num">9</span><span class="fn-text">Product School，<em>《Will AI Replace Product Managers by 2035? A CEO's Take》</em> <a href="https://productschool.com/blog/artificial-intelligence/will-ai-replace-product-managers/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-10"><span class="fn-num">10</span><span class="fn-text">Aakash Gupta，，2025年11月，<em>《AI PM Salaries & Hiring Report 2025: 12K+ Roles》</em> <a href="https://www.news.aakashg.com/p/the-state-of-ai-product-management" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-11"><span class="fn-num">11</span><span class="fn-text">Roman Fedytskyi，，2025年12月，<em>《AI Test Generation Reshapes the QA Engineer's Role》</em> <a href="https://medium.com/@roman_fedyskyi/ai-test-generation-reshapes-the-qa-engineers-role-83af6ef90cd9" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-12"><span class="fn-num">12</span><span class="fn-text">Qt Group，，2025年11月，<em>《The Copilot Era: How Generative AI Is Reshaping Quality Assurance Team Roles》</em> <a href="https://www.qt.io/how-generative-ai-is-reshaping-quality-assurance-team-roles-whitepaper" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-13"><span class="fn-num">13</span><span class="fn-text">Big Agile，，2025年，<em>《Is the Scrum Master Role Dying?》</em> <a href="https://big-agile.com/blog/is-the-scrum-master-role-dying" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-14"><span class="fn-num">14</span><span class="fn-text">Scrum.org，<em>《Do We Need to Rewrite Scrum in the Age of AI?》</em> <a href="https://www.scrum.org/resources/blog/do-we-need-rewrite-scrum-age-ai" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-15"><span class="fn-num">15</span><span class="fn-text">Scale Up Consultants，，2025年9月，<em>《AI in Agile: What Scrum Masters Should Know in 2025》</em> <a href="https://www.scaleupconsultants.com/blog/ai-in-agile-what-scrum-masters-should-know/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-16"><span class="fn-num">16</span><span class="fn-text">InfoQ，，2025年12月，<em>《Where Architects Sit in the Era of AI》</em> <a href="https://www.infoq.com/articles/architects-ai-era/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-17"><span class="fn-num">17</span><span class="fn-text">O'Reilly Radar，，2024年（需订阅），<em>《Software Architecture in an AI World》</em> <a href="https://www.oreilly.com/radar/software-architecture-in-an-ai-world/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-18"><span class="fn-num">18</span><span class="fn-text">OpenAI，，2026年，<em>《Harness engineering: leveraging Codex in an agent-first world》</em> <a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener">查看原文 ↗</a></span></li><li class="fn-item" id="ref-19"><span class="fn-num">19</span><span class="fn-text">Octopus Deploy，，2026年，<em>《Harness Engineering: The Power Of AI, Guided By Human Intelligence》</em> <a href="https://octopus.com/devops/continuous-delivery/harness-engineering/" target="_blank" rel="noopener">查看原文 ↗</a></span></li></ul></section>
 
 </main>
+
+<!-- 右侧评论栏 · Giscus 真实评论 -->
+<aside id="comment-sidebar">
+  <div class="cs-header">
+    <span class="cs-title">💬 讨论</span>
+  </div>
+  <div class="cs-tab-row" id="cs-tabs">
+    <button class="cs-tab active" data-ch="preface">前言</button>
+    <button class="cs-tab" data-ch="ch1">第一章</button>
+    <button class="cs-tab" data-ch="ch2">第二章</button>
+    <button class="cs-tab" data-ch="ch3">第三章</button>
+    <button class="cs-tab" data-ch="ch4">第四章</button>
+    <button class="cs-tab" data-ch="ch5">FAQ</button>
+    <button class="cs-tab" data-ch="epilogue">结语</button>
+  </div>
+
+  <div class="cs-panel active" id="cs-preface">
+    <div class="cs-chapter-label">前言 · 讨论区</div>
+    <div class="giscus" id="giscus-preface"></div>
+  </div>
+  <div class="cs-panel" id="cs-ch1">
+    <div class="cs-chapter-label">第一章 · 看清楚</div>
+    <div class="giscus" id="giscus-ch1"></div>
+  </div>
+  <div class="cs-panel" id="cs-ch2">
+    <div class="cs-chapter-label">第二章 · 想清楚</div>
+    <div class="giscus" id="giscus-ch2"></div>
+  </div>
+  <div class="cs-panel" id="cs-ch3">
+    <div class="cs-chapter-label">第三章 · 找准位</div>
+    <div class="giscus" id="giscus-ch3"></div>
+  </div>
+  <div class="cs-panel" id="cs-ch4">
+    <div class="cs-chapter-label">第四章 · 走起来</div>
+    <div class="giscus" id="giscus-ch4"></div>
+  </div>
+  <div class="cs-panel" id="cs-ch5">
+    <div class="cs-chapter-label">第五章 · FAQ</div>
+    <div class="giscus" id="giscus-ch5"></div>
+  </div>
+  <div class="cs-panel" id="cs-epilogue">
+    <div class="cs-chapter-label">结语 · 讨论区</div>
+    <div class="giscus" id="giscus-epilogue"></div>
+  </div>
+</aside>
 </div>
 <footer>Scrum AI 原生组织白皮书 · PMO · 产品研发团队 · 2026年3月</footer>
+<script src="https://giscus.app/client.js"
+        data-repo="Queen1-ola/scrum-ai-whitepaper"
+        data-repo-id="R_kgDOR2oRDQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOR2oRDc4C5wTX"
+        data-mapping="specific"
+        data-term="preface"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
 <script>
 const bar=document.getElementById('progress-bar');
 window.addEventListener('scroll',()=>{const h=document.documentElement;bar.style.width=(window.scrollY/(h.scrollHeight-h.clientHeight)*100)+'%';});
@@ -470,6 +544,49 @@ const secs=document.querySelectorAll('section[id],div[id^="s"]');
 const links=document.querySelectorAll('#topnav nav a,#sidebar a');
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id));}});},{rootMargin:'-20% 0px -70% 0px'});
 secs.forEach(s=>obs.observe(s));
+
+// 评论栏 Tab 切换 + Giscus 按章节加载
+const chTerms={preface:'前言',ch1:'第一章-看清楚',ch2:'第二章-想清楚',ch3:'第三章-找准位',ch4:'第四章-走起来',ch5:'第五章-FAQ',epilogue:'结语'};
+const loadedCh=new Set();
+function loadGiscus(ch){
+  if(loadedCh.has(ch)) return;
+  loadedCh.add(ch);
+  const container=document.getElementById('giscus-'+ch);
+  if(!container) return;
+  const s=document.createElement('script');
+  s.src='https://giscus.app/client.js';
+  s.setAttribute('data-repo','Queen1-ola/scrum-ai-whitepaper');
+  s.setAttribute('data-repo-id','R_kgDOR2oRDQ');
+  s.setAttribute('data-category','Announcements');
+  s.setAttribute('data-category-id','DIC_kwDOR2oRDc4C5wTX');
+  s.setAttribute('data-mapping','specific');
+  s.setAttribute('data-term',chTerms[ch]||ch);
+  s.setAttribute('data-strict','0');
+  s.setAttribute('data-reactions-enabled','1');
+  s.setAttribute('data-emit-metadata','0');
+  s.setAttribute('data-input-position','bottom');
+  s.setAttribute('data-theme','preferred_color_scheme');
+  s.setAttribute('data-lang','zh-CN');
+  s.setAttribute('crossorigin','anonymous');
+  s.async=true;
+  container.appendChild(s);
+}
+const csTabs=document.querySelectorAll('.cs-tab');
+const csPanels=document.querySelectorAll('.cs-panel');
+function switchTab(ch){
+  csTabs.forEach(t=>t.classList.toggle('active',t.dataset.ch===ch));
+  csPanels.forEach(p=>p.classList.toggle('active',p.id==='cs-'+ch));
+  loadGiscus(ch);
+}
+csTabs.forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.ch)));
+loadGiscus('preface'); // 默认加载前言
+
+// 随正文滚动自动切换
+const chapterMap={preface:'preface',ch1:'ch1',ch2:'ch2',ch3:'ch3',ch4:'ch4',ch5:'ch5',epilogue:'epilogue'};
+const chapObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){const ch=chapterMap[e.target.id];if(ch)switchTab(ch);}});
+},{rootMargin:'-10% 0px -60% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>chapObs.observe(s));
 </script>
 </body>
 </html>
